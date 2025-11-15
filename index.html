@@ -4,7 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Little Math Adventure - Fun Learning Games for Kids</title>
+    
+    <!-- Ensure HTTPS for all external resources -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Preconnect to external domains for better performance -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://play.google.com">
+    
+    <!-- DNS prefetch for external domains -->
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//play.google.com">
+    
+    <!-- Security headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: https:; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self' https:;">
+    
     <style>
         :root {
             --primary: #FF5252;
@@ -489,7 +505,7 @@
     <header>
         <div class="container header-content">
             <div class="logo">
-                <img src="logo.png" alt="Little Math Adventure Logo">
+                <img src="./logo.png" alt="Little Math Adventure Logo">
                 <h1>Little Math Adventure</h1>
             </div>
             <nav>
@@ -507,10 +523,10 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container hero-content">
-            <img src="logo.png" alt="Little Math Adventure App Icon" class="app-icon">
+            <img src="./logo.png" alt="Little Math Adventure App Icon" class="app-icon">
             <h2>Fun Math Learning for Kids!</h2>
             <p>Join the adventure and make math exciting with our collection of educational games designed to help children learn while having fun!</p>
-            <a href="https://play.google.com/store/apps/details?id=com.little_math_adventure" class="cta-button" target="_blank">
+            <a href="https://play.google.com/store/apps/details?id=com.little_math_adventure" class="cta-button" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-google-play"></i> Download Now
             </a>
         </div>
@@ -718,10 +734,10 @@
                     <h3>About Us</h3>
                     <p>Little Math Adventure is dedicated to making math learning fun and accessible for children everywhere.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
 
@@ -748,7 +764,7 @@
                 <div class="footer-section">
                     <h3>Download</h3>
                     <p>Get Little Math Adventure on your mobile device:</p>
-                    <a href="https://play.google.com/store/apps/details?id=com.little_math_adventure" class="cta-button" target="_blank" style="margin-top: 15px; padding: 10px 20px; font-size: 0.9rem;">
+                    <a href="https://play.google.com/store/apps/details?id=com.little_math_adventure" class="cta-button" target="_blank" rel="noopener noreferrer" style="margin-top: 15px; padding: 10px 20px; font-size: 0.9rem;">
                         <i class="fab fa-google-play"></i> Google Play
                     </a>
                 </div>
