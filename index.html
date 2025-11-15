@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Math Adventure - Fun Learning Games for Kids</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #FF5252;
+            --secondary: #448AFF;
+            --accent: #FFEB3B;
+            --dark: #212121;
+            --light: #FFFFFF;
+            --purple: #9C27B0;
+            --green: #4CAF50;
+            --orange: #FF9800;
+            --teal: #00BCD4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--light);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: 100px 100px;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: #555;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary), var(--purple));
+            color: var(--light);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-button i {
+            margin-right: 10px;
+        }
+
+        /* Games Section */
+        .games {
+            padding: 80px 0;
+            background-color: var(--light);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            color: var(--dark);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .game-card {
+            background: var(--light);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .game-card-header {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            font-size: 1.5rem;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-card-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: 100px 100px;
+            opacity: 0.2;
+        }
+
+        .game-card-header i {
+            font-size: 3rem;
+            z-index: 1;
+        }
+
+        .game-card-body {
+            padding: 20px;
+        }
+
+        .game-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .game-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .game-level {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--light);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: #666;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--light);
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--light);
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Animation for elements appearing on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="https://z-cdn.media.chatglm.cn/files/13821eb7-1354-4f50-8287-baebfae02137_icon.png?auth_key=1863178006-aa091961f8f84ec2b8d339f369a67d4a-0-2dc64e3aa682f4e2181c5fbf057ca00c" alt="Little Math Adventure Logo">
+                <h1>Little Math Adventure</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#games">Games</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <img src="https://z-cdn.media.chatglm.cn/files/13821eb7-1354-4f50-8287-baebfae02137_icon.png?auth_key=1863178006-aa091961f8f84ec2b8d339f369a67d4a-0-2dc64e3aa682f4e2181c5fbf057ca00c" alt="Little Math Adventure App Icon" class="app-icon">
+            <h2>Fun Math Learning for Kids!</h2>
+            <p>Join the adventure and make math exciting with our collection of educational games designed to help children learn while having fun!</p>
+            <a href="https://play.google.com/store/apps/details?id=com.little_math_adventure" class="cta-button" target="_blank">
+                <i class="fab fa-google-play"></i> Download Now
+            </a>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section id="games" class="games">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Educational Games</h2>
+            <div class="games-grid">
+                <div class="game-card fade-in">
+                    <div class="game-card-header" style="background: linear-gradient(135deg, #FF5252, #FF9800);">
+                        <i class="fas fa-sort-numeric-up"></i>
+                    </div>
+                    <div class="game-card-body">
+                        <h3>Patterns</h3>
+                        <p>Learn to recognize and complete number patterns to develop logical thinking skills.</p>
+                        <span class="game-level">Level 2</span>
+                    </div>
+                </div>
+
+                <div class="game-card fade-in">
+                    <div class="game-card-header" style="background: linear-gradient(135deg, #4CAF50, #8BC34A);">
+                        <i class="fas fa-paw"></i>
+                    </div>
+                    <div class="game-card-body">
+                        <h3>Jungle Jive</h3>
+                        <p>Count the animals in the jungle to improve your counting abilities in a fun way!</p>
+                        <span class="game-level">Level 2</span>
+                    </div>
+                </div>
+
+                <div class="game-card fade-in">
+                    <div class="game-card-header" style="background: linear-gradient(135deg, #2196F3, #00BCD4);">
+                        <i class="fas fa-greater-than"></i>
+                    </div>
+                    <div class="game-card-body">
+                        <h3>Greater Gator</h3>
+                        <p>Compare numbers and tap the bigger one to understand numerical relationships.</p>
+                        <span class="game-level">Level 2</span>
+                    </div>
+                </div>
+
+                <div class="game-card fade-in">
+                    <div class="game-card-header" style="background: linear-gradient(135deg, #9C27B0, #E91E63);">
+                        <i class="fas fa-th"></i>
+                    </div>
+                    <div class="game-card-body">
+                        <h3>Number Puzzle</h3>
+                        <p>A 2048-style game that helps with strategic thinking and number combinations.</p>
+                        <span class="game-level">All Levels</span>
+                    </div>
+                </div>
+
+                <div class="game-card fade-in">
+                    <div class="game-card-header" style="background: linear-gradient(135deg, #673AB7, #3F51B5);">
+                        <i class="fas fa-divide"></i>
+                    </div>
+                    <div class="game-card-body">
+                        <h3>Divide & Conquer</h3>
+                        <p>Master division skills with engaging challenges that make learning fun.</p>
+                        <span class="game-level">Various Levels</span>
+                    </div>
+                </div>
+
+                <div class="game-card fade-in">
+                    <div class="game-card-header" style="background: linear-gradient(135deg, #FF5722, #FF9800);">
+                        <i class="fas fa-times"></i>
+                    </div>
+                    <div class="game-card-body">
+                        <h3>Times Tables</h3>
+                        <p>Practice multiplication tables with interactive exercises to build math confidence.</p>
+                        <span class="game-level">Level 1</span>
+                    </div>
+                </div>
+
+                <div class="game-card fade-in">
+                    <div class="game-card-header" style="background: linear-gradient(135deg, #009688, #4CAF50);">
+                        <i class="fas fa-minus"></i>
+                    </div>
+                    <div class="game-card-body">
+                        <h3>Quick Subtract</h3>
+                        <p>Improve subtraction speed and accuracy with timed challenges.</p>
+                        <span class="game-level">Level 1</span>
+                    </div>
+                </div>
+
+                <div class="game-card fade-in">
+                    <div class="game-card-header" style="background: linear-gradient(135deg, #FFC107, #FFEB3B);">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="game-card-body">
+                        <h3>Fast Add</h3>
+                        <p>Sharpen your addition skills with quick-fire math problems.</p>
+                        <span class="game-level">Level 6</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title fade-in">Why Choose Little Math Adventure?</h2>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3>Kid-Friendly Design</h3>
+                    <p>Colorful, engaging interface designed specifically for young learners.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Educational Value</h3>
+                    <p>All games are designed with educational experts to ensure learning outcomes.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your child's progress and celebrate their achievements.</p>
+                </div>
+
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Rewards System</h3>
+                    <p>Motivating rewards and stars to keep children engaged and excited about learning.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>Little Math Adventure is dedicated to making math learning fun and accessible for children everywhere.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#games">Games</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="mailto:support@littlemathadventure.com">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Download</h3>
+                    <p>Get Little Math Adventure on your mobile device:</p>
+                    <a href="https://play.google.com/store/apps/details?id=com.little_math_adventure" class="cta-button" target="_blank" style="margin-top: 15px; padding: 10px 20px; font-size: 0.9rem;">
+                        <i class="fab fa-google-play"></i> Google Play
+                    </a>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2023 Little Math Adventure. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Add fade-in animation on scroll
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
